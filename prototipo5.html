@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>D'Gianna — Pastelería Fina Artesanal</title>
+  <!-- Tipografías idénticas al boceto (con soporte local en carpeta font/) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Enlace al archivo CSS en la carpeta css -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Franja superior corporativa -->
+  <div class="top-brand-strip">D'IANNA</div>
+
+  <!-- ================= BARRA DE NAVEGACIÓN DORADA ================= -->
+  <header class="navbar">
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#inicio" class="active">Inicio</a></li>
+        <li><a href="#vitrina">Nuestra vitrina</a></li>
+        <li><a href="#edicion-limitada">Edicion limitada</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="javascript:void(0)" onclick="openModal('specialOrderModal')">Pedidos Especiales</a></li>
+        
+      </ul>
+    </nav>
+
+    <div class="nav-right">
+      <!-- Botón de Modo Oscuro / Claro -->
+      <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleDarkMode()" title="Activar/Desactivar Modo Oscuro">
+        <span id="themeIcon">🌙</span>
+        <span id="themeLabel">Modo Oscuro</span>
+      </button>
+
+      <!-- Píldora de usuario activo -->
+      <span id="userGreetingPill" class="user-greeting-pill" onclick="handleUserIconClick()"></span>
+
+      <!-- Campana de Notificaciones -->
+      <button class="icon-btn" title="Notificaciones" onclick="openModal('notificationsModal')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+        </svg>
+        <span class="badge-count">3</span>
+      </button>
+
+      <!-- Icono de Usuario (Abre Login o Perfil) -->
+      <button class="icon-btn" title="Iniciar Sesión o Ver Perfil" onclick="handleUserIconClick()">
+        <svg width="23" height="23" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+        </svg>
+      </button>
+
+      <!-- Icono de Carrito de Compras -->
+      <button class="icon-btn" title="Carrito de Compras" onclick="openCartModal()">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+        </svg>
+        <span id="cartBadge" class="badge-count">0</span>
+      </button>
+
+      <a href="#inicio" class="brand-logo">D'Gianna</a>
+    </div>
+  </header>
+
+  <!-- ================= 1. CARRUSEL HERO DE 3 IMÁGENES (ARRASTRABLE CON MOUSE) ================= -->
+  <section id="inicio" class="hero-carousel-wrapper">
+    <div class="hero-carousel-viewport" id="heroViewport">
+      <div class="hero-carousel-track" id="heroTrack">
+        
+        <!-- Slide 1: Imagen principal Frame 16 -->
+        <article class="hero-slide">
+          <img src="imagen/hero-1.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1400&q=85';" alt="Torta de Chocolate Artesanal" class="slide-bg-img" draggable="false" />
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <span class="hero-kicker">Hecho a mano, hecho con amor</span>
+            <h1 class="hero-title">Momentos que saben<br>a felicidad</h1>
+            <p class="hero-desc">
+              Pastelería artesanal creada para convertir cada encuentro en un recuerdo inolvidable.
+            </p>
+            <button class="btn-gold-cta" onclick="document.getElementById('antojos').scrollIntoView({behavior:'smooth'})">
+              Explorar sabore
+            </button>
+          </div>
+        </article>
+
+        <!-- Slide 2: Segunda imagen lateral de Frame 16 -->
+        <article class="hero-slide">
+          <img src="imagen/hero-2.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519676867240-f03562e64548?auto=format&fit=crop&w=1200&q=85';" alt="Sabores de temporada Crepes" class="slide-bg-img" draggable="false" />
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <span class="hero-kicker">Sabores de temporada</span>
+            <h2 class="hero-title">Nuestro Sabor Artesanal </h2>
+            <p class="hero-desc">
+              Descubrir la carta de crepes tibios, frutos rojos frescos y chocolate intenso preparado al instante.
+            </p>
+            <button class="btn-gold-cta" onclick="document.getElementById('vitrina').scrollIntoView({behavior:'smooth'})">
+              Explorar sabore
+            </button>
+          </div>
+        </article>
+
+        <!-- Slide 3: Tercera imagen del carrusel -->
+        <article class="hero-slide">
+          <img src="imagen/hero-3.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=1400&q=85';" alt="Edición Limitada Frutos Rojos" class="slide-bg-img" draggable="false" />
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <span class="hero-kicker">Colección Exclusiva D'Gianna</span>
+            <h2 class="hero-title">Alta Pastelería<br>en cada detalle</h2>
+            <p class="hero-desc">
+              Descubre nuestra Edición Limitada con descuentos especiales en tortas, tartaletas y boxes para eventos.
+            </p>
+            <button class="btn-gold-cta" onclick="document.getElementById('edicion-limitada').scrollIntoView({behavior:'smooth'})">
+              Ver Edición Limitada
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- Controles del Carrusel -->
+    <button class="carousel-arrow prev" onclick="moveSlide(-1)" aria-label="Anterior">&#10094;</button>
+    <button class="carousel-arrow next" onclick="moveSlide(1)" aria-label="Siguiente">&#10095;</button>
+    
+    <div class="carousel-dots" id="carouselDots">
+      <button class="dot active" onclick="goToSlide(0)" aria-label="Diapositiva 1"></button>
+      <button class="dot" onclick="goToSlide(1)" aria-label="Diapositiva 2"></button>
+      <button class="dot" onclick="goToSlide(2)" aria-label="Diapositiva 3"></button>
+    </div>
+  </section>
+
+  <!-- ================= SECCIÓN: ANTOJOS PARA CADA OCASIÓN (DUPLICADO: 12 PRODUCTOS) ================= -->
+  <section id="antojos" class="section-container">
+    <h2 class="script-heading-red">Antojos para cada ocasión:</h2>
+
+    <div class="filter-pills" id="antojosFilters">
+      <button class="filter-pill active" onclick="filterAntojos('todos', this)">todos</button>
+      <button class="filter-pill" onclick="filterAntojos('tortas', this)">tortas</button>
+      <button class="filter-pill" onclick="filterAntojos('crepes', this)">crepes</button>
+      <button class="filter-pill" onclick="filterAntojos('bocaditos', this)">bocaditos</button>
+    </div>
+
+    <div class="grid-3" id="antojosGrid">
+      <!-- Renderizado dinámico de los 12 productos (6 originales x 2) -->
+    </div>
+  </section>
+
+  <!-- ================= SECCIÓN: DESDE NUESTRO TALLER (FRAME 16) ================= -->
+  <section class="taller-split">
+    <div class="taller-img-wrap">
+      <img src="imagen/vitrina-taller.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=1100&q=85';" alt="Vitrina de pastelería fina D'Gianna" />
+    </div>
+    <div class="taller-content">
+      <span class="taller-kicker">Desde nuestro taller</span>
+      <h2 class="taller-title">La delicadeza<br>está en los<br>detalles</h2>
+      <p class="taller-text">
+        Creemos en la pausa, en compartir alrededor de la mesa y en el poder de una receta hecha con paciencia. Cada torta se termina a mano para que llegue a ti tan especial como la ocasión.
+      </p>
+      <button class="btn-pill-burgundy" onclick="openModal('historiaModal')">
+        CONOCE NUESTRA HISTORIA D DIANA
+      </button>
+    </div>
+  </section>
+
+  <!-- ================= 3. CATÁLOGO: NUESTRA VITRINA ARTESANAL (DUPLICADO: 24 PRODUCTOS) ================= -->
+  <section id="vitrina" class="section-container">
+    <h2 class="script-heading-dark">Nuestra Vitrina Artesanal</h2>
+    <p class="section-subtitle-center">
+      Recetas que enamoran, ingredientes nobles y un toque de D'Gianna en cada bocado
+    </p>
+
+    <div class="filter-pills" id="vitrinaFilters">
+      <button class="filter-pill active" onclick="filterVitrina('todos', this)">todos</button>
+      <button class="filter-pill" onclick="filterVitrina('tortas', this)">tortas</button>
+      <button class="filter-pill" onclick="filterVitrina('crepes', this)">crepes</button>
+      <button class="filter-pill" onclick="filterVitrina('bocaditos', this)">bocaditos</button>
+    </div>
+
+    <div class="grid-4" id="vitrinaGrid">
+      <!-- Renderizado dinámico de los 24 productos (12 originales de Frame 21 duplicados) -->
+    </div>
+  </section>
+
+  <!-- ================= SECCIÓN EDICIÓN LIMITADA (12 MEJORES PRODUCTOS - FRAME 34) ================= -->
+  <section id="edicion-limitada" class="section-container">
+    <h2 class="script-heading-dark">Edición Limitada:</h2>
+
+    <div class="limited-banner-wrap">
+      <img
+        class="limited-banner-img"
+        src="imagen/banner-limitada.jpg"
+        onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=1400&q=85';"
+        alt="Edición Limitada D'Gianna"
+      />
+    </div>
+
+    <div class="countdown-text">
+      Oferta termina en: <span id="countdownTimer">02 : 15 : 48 : 30</span>
+    </div>
+
+    <div class="grid-4" id="limitedGrid">
+      <!-- Renderizado dinámico de los 12 mejores productos exclusivos -->
+    </div>
+  </section>
+
+  <!-- ================= 4. COMENTARIOS Y OPINIONES (FRAME 16 + FRAME 39) ================= -->
+  <section class="featured-comment-box">
+    <div class="comentrios-pill">COMENTARIOS:</div>
+    <p class="featured-quote" id="featuredQuoteText">
+      El postre fue precioso, delicado y delicioso. Se convirtió en el centro de nuestra celebración.
+    </p>
+    <div class="featured-author" id="featuredQuoteAuthor">
+      CAMAL R CLIENTE DULCE ALMA
+    </div>
+  </section>
+
+  <section id="opiniones" class="reviews-section">
+    <div class="gold-bar-header">
+      <h2>Lo Que Dicen Nuestros Amantes del Dulce</h2>
+    </div>
+
+    <div class="reviews-grid" id="reviewsGrid">
+      <!-- Reseñas de Frame 39 + nuevas reseñas añadidas por el usuario -->
+    </div>
+
+    <div class="rating-summary-bar">
+      <div class="rating-summary-title">Sección de Calificación</div>
+
+      <div class="rating-summary-stars">
+        <div class="big-stars">★ ★ ★ ★ ★</div>
+        <div class="reviews-count-label" id="reviewsCountText">Stars (based on 350 reviews)</div>
+      </div>
+
+      <button class="btn-leave-review" onclick="openModal('reviewModal')">
+        Botón: Déjanos tu Reseña
+      </button>
+    </div>
+  </section>
+
+  <!-- ================= 6. QUIÉNES SOMOS / HISTORIA CORPORATIVA (FRAME 47) ================= -->
+  <section id="nosotros" class="nosotros-section">
+    <div class="gold-bar-header">
+      <h2>Quiénes Somos — Historia D'Gianna</h2>
+    </div>
+
+    <div class="nosotros-grid">
+      <div class="nosotros-photo-card">
+        <div class="nosotros-photo-sign">D'Gianna</div>
+        <img
+          src="imagen/tienda-dgianna.jpg"
+          onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80';"
+          alt="Equipo y Local Pastelería D'Gianna en San Juan de Lurigancho"
+        />
+      </div>
+
+      <div class="nosotros-description">
+        <p>
+          Es una empresa peruana llamada Sociedad Anónima Cerrada (S.A.C.) dedicada a la elaboración y comercialización de productos de panadería y pastelería, con presencia principalmente en el distrito de San Juan de Lurigancho, en Lima. Su apertura fue el 20 de septiembre de 2007 cuyo trabajo es la elaboración de productos de panadería y pastelería.
+        </p>
+        <p>
+          Algunas fuentes señalan que la empresa figura en condición de “baja de oficio” en registros de SUNAT, lo que indica que podría no encontrarse activa a nivel administrativo. Sin embargo, la marca mantiene presencia comercial y reconocimiento local, especialmente a través de puntos de venta físicos y redes sociales.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 5. MAPA, UBICACIÓN Y ATENCIÓN (FRAME 30) ================= -->
+  <section id="contacto" class="contact-section">
+    <div class="red-banner-header">
+      <h2>Cerca de Ti: Ubicación y Atención</h2>
+    </div>
+
+    <div class="contact-grid">
+      <div>
+        <div class="map-box">
+          <iframe
+            title="Ubicación Pastelería D'Gianna en Lima"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-77.085%2C-12.065%2C-76.940%2C-11.960&amp;layer=mapnik&amp;marker=-12.005%2C-77.005"
+            loading="lazy">
+          </iframe>
+        </div>
+        <p class="map-caption">Av. Canto Grande 1234, San Juan de Lurigancho, Lima.</p>
+
+        <h3 class="horarios-title">Horarios de Atención</h3>
+        <div class="horarios-text">
+          <p>Lunes a Sábado: 9:00 AM - 7:00 PM</p>
+          <p>Domingo: 9:00 AM - 1:00 PM</p>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="quick-form-title">Formulario Rápido</h3>
+        <form id="quickContactForm" onsubmit="handleContactSubmit(event)">
+          <div class="form-group">
+            <label for="cName">Nombre Completo</label>
+            <input type="text" id="cName" required placeholder="Ingresa tu nombre completo" />
+          </div>
+          <div class="form-group">
+            <label for="cEmail">Correo Electrónico</label>
+            <input type="email" id="cEmail" required placeholder="tucorreo@ejemplo.com" />
+          </div>
+          <div class="form-group">
+            <label for="cSubject">Asunto</label>
+            <input type="text" id="cSubject" required placeholder="Consulta de pedido o evento" />
+          </div>
+          <div class="form-group">
+            <label for="cMessage">Mensaje</label>
+            <input type="text" id="cMessage" required placeholder="Escribe tu mensaje aquí..." />
+          </div>
+          <button type="submit" class="btn-agregar" style="padding:10px 24px; font-size:0.82rem; margin-top:6px;">
+            ENVIAR FORMULARIO
+          </button>
+        </form>
+
+        <div class="direct-channels">
+          <p><strong>Canales Directos</strong></p>
+          <p>WhatsApp: +51 987 654 321 (Atención Directa)</p>
+          <p>Correo electrónico:<br>info@pastedgianna.com</p>
+          <p class="tagline">Nuestra pasión por el detalle y calidad artesanal a tu alcance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= POLÍTICA DE DELIVERY, ZONAS Y COTIZADOR UBER (FRAME 43) ================= -->
+  <section id="delivery" class="contact-section delivery-policy-section">
+    <div class="red-banner-header">
+      <h2>Política de Delivery y Zonas de Reparto</h2>
+    </div>
+
+    <div class="contact-grid">
+      <div>
+        <h3 class="horarios-title">Horarios de Atención</h3>
+        <div class="delivery-zones-text">
+          <p><strong>Cobertura en San Juan de Lurigancho</strong></p>
+          <p>Zona 1: Canto Grande - Envío S/. 5.00</p>
+          <p>Zona 2: Zárate - Envío S/. 5.00</p>
+          <p>Zona 3: Las Flores - Envío S/. 5.00</p>
+          <p>Zona 4: Mangomarca - Envío S/. 7.00</p>
+          <p>Zona 5: Campoy - Envío S/. 7.00</p>
+          <p class="free-shipping-note">Pedidos mayores a S/. 100.00: Envío GRATIS a todo SJL</p>
+        </div>
+
+        <!-- Simulador / Calculadora Interactiva de Precio de Envío por Uber en Soles -->
+        <div class="uber-estimator-card">
+          <div class="uber-header">
+            <span class="uber-badge">Uber Flash / Direct</span>
+            <h4>Simulador de Envío por Uber (Cotización en S/.)</h4>
+          </div>
+          <div class="form-group">
+            <label for="uberZoneSelect">Selecciona tu Zona o Distrito de Destino:</label>
+            <select id="uberZoneSelect" onchange="calculateUberShipping()">
+              <option value="5.00" data-km="2.4" data-time="25-35 min">SJL - Zona 1: Canto Grande (S/. 5.00)</option>
+              <option value="5.00" data-km="3.1" data-time="30-40 min">SJL - Zona 2: Zárate (S/. 5.00)</option>
+              <option value="5.00" data-km="2.8" data-time="25-35 min">SJL - Zona 3: Las Flores (S/. 5.00)</option>
+              <option value="7.00" data-km="4.5" data-time="35-50 min">SJL - Zona 4: Mangomarca (S/. 7.00)</option>
+              <option value="7.00" data-km="5.0" data-time="40-55 min">SJL - Zona 5: Campoy (S/. 7.00)</option>
+              <option value="14.50" data-km="9.2" data-time="50-65 min">San Martín de Porres / Independencia (Tarifa Uber S/. 14.50)</option>
+              <option value="16.00" data-km="10.5" data-time="55-70 min">Rímac / Cercado de Lima (Tarifa Uber S/. 16.00)</option>
+              <option value="19.50" data-km="13.0" data-time="60-80 min">Santa Anita / Ate / La Molina (Tarifa Uber S/. 19.50)</option>
+              <option value="22.00" data-km="15.4" data-time="65-90 min">Miraflores / San Isidro / Surco (Tarifa Uber S/. 22.00)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="uberVehicleSelect">Tipo de Unidad Uber:</label>
+            <select id="uberVehicleSelect" onchange="calculateUberShipping()">
+              <option value="1">Uber Flash Moto (Ideal para bocaditos y crepes)</option>
+              <option value="1.35">Uber Flash Auto Climatizado (Recomendado para tortas)</option>
+            </select>
+          </div>
+
+          <div class="uber-result-box" id="uberResultBox">
+            <div><strong>Distancia estimada:</strong> <span id="uberKm">2.4 km</span> · <strong>Tiempo:</strong> <span id="uberTime">25-35 min</span></div>
+            <div class="uber-price-highlight">Precio estimado de envío por Uber: <span id="uberPriceDisplay">S/. 5.00</span></div>
+            <small id="uberFreeNotice">¡En compras mayores a S/. 100.00 dentro de SJL tu envío es GRATIS!</small>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="delivery-schedule-info">
+          <p>
+            <strong>Horarios y Programación Horario de Entrega:</strong><br>
+            Lunes a Domingo, 9:00 AM - 7:00 PM
+          </p>
+          <p>
+            <strong>Programación de Pedidos:</strong> Disponible con 24 horas de anticipación para tortas personalizadas.
+          </p>
+          <p>
+            <strong>Tiempos Estimados:</strong> Deliveries estándar en 60-90 minutos dentro de SJL.
+          </p>
+        </div>
+
+        <div class="map-box" style="height: 235px; margin-top: 18px;">
+          <iframe
+            title="Mapa Zonas de Reparto SJL"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-77.095%2C-12.065%2C-76.935%2C-11.965&amp;layer=mapnik&amp;marker=-12.005%2C-77.005"
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </div>
+
+    <button class="red-whatsapp-banner-btn" onclick="openModal('whatsappZoneModal')">
+      Consultar Cobertura para Otras Zonas (L= WhatsApp)
+    </button>
+  </section>
+
+  <!-- ================= 6. PIE DE PÁGINA FORMAL Y LEGAL (FOOTER) ================= -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Pastelería fina</h4>
+        <div class="footer-brand-big">D'Gianna</div>
+        <p class="footer-subbrand">Dulce Alma — RUC: 20517384912 (D'GIANNA S.A.C.)</p>
+        <p style="margin-top: 10px;">Celebramos contigo, bocado a bocado.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Visítanos y Horarios</h4>
+        <p>Av. Los Jardines 214, Lima</p>
+        <p>Av. Canto Grande 1234, San Juan de Lurigancho</p>
+        <p>Lun–Sáb · 9:00–20:00 | Dom · 9:00–13:00</p>
+        <p>Tel: +51 987 654 321 / 624 275 922</p>
+        <p>hola@D gianna.pe · info@DGianna.com</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Enlaces y Legal</h4>
+        <a href="#vitrina">Nuestra vitrina</a>
+        <a href="#nosotros">Sobre nosotros</a>
+        <a href="javascript:void(0)" onclick="openModal('specialOrderModal')">Pedidos especiales</a>
+        <a href="javascript:void(0)" onclick="openModal('legalModal')">Política de Privacidad</a>
+        <a href="javascript:void(0)" onclick="openModal('legalModal')">Términos y Condiciones</a>
+      </div>
+
+      <div class="footer-col footer-copy">
+        © 2025 D gianna<br>
+        <small>Todos los derechos reservados</small>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================================= -->
+  <!-- VENTANA EMERGENTE 1: FICHA DETALLADA DEL POSTRE (FRAME 27)              -->
+  <!-- ======================================================================= -->
+  <div id="productModal" class="modal-overlay" onclick="closeModalOnBg(event, 'productModal')">
+    <div class="modal-window">
+      <div class="modal-gold-top">
+        <span class="modal-brand">D'Gianna</span>
+        <button class="modal-close-btn" onclick="closeModal('productModal')">&times;</button>
+      </div>
+
+      <div class="product-modal-body">
+        <div class="product-modal-img-wrap">
+          <img id="pmImage" src="" alt="Postre D'Gianna" />
+        </div>
+
+        <div class="product-modal-details">
+          <h2 id="pmTitle">Torta de Chocolate D'Gianna</h2>
+          <p class="pm-desc" id="pmDesc"></p>
+          <p class="pm-portions" id="pmPortions"></p>
+
+          <div class="pm-meta">
+            <strong>Detalles del Producto</strong><br>
+            <span id="pmIngredients"></span>
+          </div>
+          <div class="pm-meta" id="pmAllergens"></div>
+
+          <div class="pm-price" id="pmPrice">S/. 85.00</div>
+
+          <label class="pm-card-label" for="pmCardMessage">Agregar mensaje para tarjeta</label>
+          <input
+            type="text"
+            id="pmCardMessage"
+            class="pm-card-input"
+            placeholder="Agregar mensaje para tarjeta (Ej. Feliz Cumpleaños Mamá)"
+          />
+
+          <div class="pm-action-buttons">
+            <button class="btn-add-cart-modal" onclick="addModalProductToCart(false)">
+              AGREGAR AL CARRITO +
+            </button>
+            <button class="btn-buy-now-modal" onclick="addModalProductToCart(true)">
+              COMPRAR AHORA
+            </button>
+          </div>
+
+          <div class="pm-delivery-options">
+            <span class="pm-delivery-option selected" id="optEasy" onclick="selectDeliveryOption('Easy entrega')">
+              Easy entrega
+            </span>
+            <span class="pm-delivery-option" id="optPickup" onclick="selectDeliveryOption('Pickup Pickup')">
+              Pickup Pickup
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-gold-bottom">
+        <div>
+          <span style="font-size:0.75rem; display:block;">Pastelería Fina</span>
+          <strong style="font-size:1.35rem; font-style:italic;">D'Gianna</strong>
+        </div>
+        <div>
+          San Juan de, San Juan de<br>
+          Lurigancho,+90 / 624 275 922info<br>
+          @D Gianna.com
+        </div>
+        <div style="text-align:right;">
+          Política de Privacidad<br>
+          Términos y Condiciones<br>
+          Términos y Condiciones
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- VENTANA EMERGENTE 2: INICIO DE SESIÓN Y REGISTRO (FRAME 18)             -->
+  <!-- ======================================================================= -->
+  <div id="authModal" class="modal-overlay" onclick="closeModalOnBg(event, 'authModal')">
+    <div class="modal-window">
+      <div class="modal-gold-top">
+        <span class="modal-brand">D'Gianna</span>
+        <button class="modal-close-btn" onclick="closeModal('authModal')">&times;</button>
+      </div>
+
+      <div class="auth-modal-body">
+        <div class="auth-card">
+          <div class="auth-illustration">
+            <img
+              src="imagen/login-ilustracion.jpg"
+              onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1558326567-98ae2405596b?auto=format&fit=crop&w=700&q=85';"
+              alt="Ilustración Pastelería D'Gianna"
+            />
+          </div>
+
+          <!-- Vista 1: Iniciar Sesión (Idéntica a Frame 18) -->
+          <div class="auth-form-side" id="loginFormView">
+            <button type="button" class="btn-google-auth" onclick="openModal('googleModal')">
+              <svg width="18" height="18" viewBox="0 0 48 48">
+                <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+                <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+                <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+                <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+              </svg>
+              Continuar con Google
+            </button>
+
+            <input
+              type="text"
+              id="loginIdentifier"
+              class="auth-input"
+              placeholder="Número de Teléfono o Correo Electrónico"
+            />
+
+            <input
+              type="password"
+              id="loginPassword"
+              class="auth-input"
+              placeholder="Contraseña"
+            />
+
+            <button type="button" class="btn-auth-black" onclick="handleLogin()">
+              INICIAR SESIÓN
+            </button>
+
+            <button type="button" class="btn-auth-outline" onclick="switchAuthView('register')">
+              REGISTRARSE
+            </button>
+          </div>
+
+          <!-- Vista 2: Formulario de Registro de Nuevos Usuarios -->
+          <div class="auth-form-side" id="registerFormView" style="display:none;">
+            <h4 class="auth-subtitle">Registro de Nuevo Usuario</h4>
+            <input type="text" id="regName" class="auth-input" placeholder="Nombre y Apellidos" />
+            <input type="email" id="regEmail" class="auth-input" placeholder="Correo Electrónico o Teléfono" />
+            <input type="text" id="regZone" class="auth-input" placeholder="Dirección / Zona en SJL (Ej. Canto Grande)" />
+            <input type="password" id="regPassword" class="auth-input" placeholder="Crear Contraseña" />
+
+            <button type="button" class="btn-auth-black" onclick="handleRegister()">
+              CREAR MI CUENTA Y VER PERFIL
+            </button>
+
+            <button type="button" class="btn-auth-outline" onclick="switchAuthView('login')">
+              VOLVER A INICIAR SESIÓN
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- VENTANA EMERGENTE 3: PERFIL DEL USUARIO (SOLICITADO EN PUNTO 2)         -->
+  <!-- ======================================================================= -->
+  <div id="profileModal" class="modal-overlay" onclick="closeModalOnBg(event, 'profileModal')">
+    <div class="modal-window" style="max-width: 680px;">
+      <div class="modal-gold-top">
+        <span class="modal-brand">Perfil de Cliente D'Gianna</span>
+        <button class="modal-close-btn" onclick="closeModal('profileModal')">&times;</button>
+      </div>
+
+      <div class="profile-modal-body">
+        <div class="profile-header-card">
+          <div class="profile-avatar-circle" id="profileAvatarLetter">J</div>
+          <div class="profile-main-info">
+            <span class="profile-tier-badge">★ Miembro Dulce Alma VIP</span>
+            <h3 id="profileNameDisplay">Nombre del Cliente</h3>
+            <p id="profileEmailDisplay">cliente@dgianna.pe</p>
+            <p id="profileZoneDisplay">📍 Zona de entrega: San Juan de Lurigancho</p>
+          </div>
+        </div>
+
+        <div class="profile-stats-grid">
+          <div class="profile-stat-box">
+            <strong id="profileOrdersCount">1</strong>
+            <span>Pedidos Activos</span>
+          </div>
+          <div class="profile-stat-box">
+            <strong>150 pts</strong>
+            <span>Puntos D'Gianna</span>
+          </div>
+          <div class="profile-stat-box">
+            <strong id="profileProviderBadge">Correo</strong>
+            <span>Método de Acceso</span>
+          </div>
+        </div>
+
+        <div class="profile-orders-section">
+          <h4>Mis Pedidos y Actividad Reciente</h4>
+          <div id="profileOrdersList" class="profile-orders-list">
+            <p class="muted-note">Bienvenido a tu cuenta D'Gianna. Tus compras aparecerán registradas aquí.</p>
+          </div>
+        </div>
+
+        <div class="profile-actions-row">
+          <button class="btn-pill-burgundy" onclick="closeModal('profileModal'); document.getElementById('vitrina').scrollIntoView({behavior:'smooth'});">
+            IR A COMPRAR POSTRES
+          </button>
+          <button class="btn-auth-outline" style="width:auto; padding:10px 22px;" onclick="logoutUser()">
+            CERRAR SESIÓN
+          </button>
+        </div>
+      </div>
+
+      <div class="modal-gold-bottom">
+        <div><strong>D'Gianna</strong> Pastelería Fina</div>
+        <div>Atención VIP: +51 987 654 321</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- VENTANA EMERGENTE 4: SELECTOR INTERACTIVO DE CUENTA GOOGLE              -->
+  <!-- ======================================================================= -->
+  <div id="googleModal" class="modal-overlay" onclick="closeModalOnBg(event, 'googleModal')">
+    <div class="modal-window" style="max-width: 450px;">
+      <div class="modal-gold-top">
+        <span class="modal-brand">Iniciar sesión con Google</span>
+        <button class="modal-close-btn" onclick="closeModal('googleModal')">&times;</button>
+      </div>
+      <div class="simple-modal-content">
+        <p style="margin-bottom:14px; font-size:0.9rem;">Elige una cuenta de Google para acceder a <strong>Pastelería D'Gianna</strong>:</p>
+        <div class="google-accounts-list">
+          <button class="btn-google-account" onclick="completeGoogleAuth('Cliente Dulce Alma', 'dulcealma.cliente@gmail.com', 'Canto Grande, SJL')">
+            <span class="g-avatar" style="background:#8c52ff;">C</span>
+            <div>
+              <strong>Cliente Dulce Alma</strong>
+              <small>dulcealma.cliente@gmail.com</small>
+            </div>
+          </button>
+          <button class="btn-google-account" onclick="completeGoogleAuth('María G. Amante del Dulce', 'mariag.sjl@gmail.com', 'Zárate, SJL')">
+            <span class="g-avatar" style="background:#9e0b22;">M</span>
+            <div>
+              <strong>María G. Amante del Dulce</strong>
+              <small>mariag.sjl@gmail.com</small>
+            </div>
+          </button>
+        </div>
+        <div class="form-group" style="margin-top:14px;">
+          <label>O ingresa tu correo Gmail manualmente:</label>
+          <input type="email" id="customGoogleEmail" placeholder="tu.nombre@gmail.com" />
+        </div>
+        <button class="btn-add-cart-modal" onclick="handleCustomGoogleAuth()">CONTINUAR CON GOOGLE</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- VENTANA EMERGENTE 5: CARRITO DE COMPRAS Y CHECKOUT                      -->
+  <!-- ======================================================================= -->
+  <div id="cartModal" class="modal-overlay" onclick="closeModalOnBg(event, 'cartModal')">
+    <div class="modal-window" style="max-width: 640px;">
+      <div class="modal-gold-top">
+        <span class="modal-brand">Carrito de Compras D'Gianna</span>
+        <button class="modal-close-btn" onclick="closeModal('cartModal')">&times;</button>
+      </div>
+      <div class="simple-modal-content">
+        <div id="cartItemsContainer"></div>
+        <div class="cart-summary-box">
+          <div class="cart-summary-row">
+            <span>Subtotal de productos:</span>
+            <strong id="cartSubtotalText">S/. 0.00</strong>
+          </div>
+          <div class="cart-summary-row">
+            <span>Envío estimado (Uber / Reparto SJL):</span>
+            <strong id="cartShippingText">S/. 5.00</strong>
+          </div>
+          <div class="cart-summary-row total">
+            <span>Total a Pagar:</span>
+            <strong id="cartTotalText">S/. 0.00</strong>
+          </div>
+        </div>
+        <div style="display:flex; gap:12px; margin-top:16px;">
+          <button class="btn-add-cart-modal" onclick="processCheckout()">CONFIRMAR Y REALIZAR PEDIDO</button>
+          <button class="btn-auth-outline" style="margin-top:0; width:auto; padding:0 18px;" onclick="clearCart()">VACIAR</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- VENTANA EMERGENTE 6: PUBLICAR RESEÑA / COMENTARIO (FRAME 39)            -->
+  <!-- ======================================================================= -->
+  <div id="reviewModal" class="modal-overlay" onclick="closeModalOnBg(event, 'reviewModal')">
+    <div class="modal-window" style="max-width: 520px;">
+      <div class="modal-gold-top">
+        <span class="modal-brand">Déjanos tu Reseña</span>
+        <button class="modal-close-btn" onclick="closeModal('reviewModal')">&times;</button>
+      </div>
+      <div class="simple-modal-content">
+        <form onsubmit="handleNewReviewSubmit(event)">
+          <div class="form-group">
+            <label>Tu Calificación:</label>
+            <div class="star-picker" id="starPicker">
+              <span class="active" onclick="setReviewStars(1)">★</span>
+              <span class="active" onclick="setReviewStars(2)">★</span>
+              <span class="active" onclick="setReviewStars(3)">★</span>
+              <span class="active" onclick="setReviewStars(4)">★</span>
+              <span class="active" onclick="setReviewStars(5)">★</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="revName">Tu Nombre:</label>
+            <input type="text" id="revName" required placeholder="Ej. Camila R." />
+          </div>
+          <div class="form-group">
+            <label for="revProduct">Postre que probaste:</label>
+            <select id="revProduct">
+              <option value="Torta de Chocolate D'Gianna">Torta de Chocolate D'Gianna</option>
+              <option value="Red Velvet">Red Velvet</option>
+              <option value="Crepes de la Casa">Crepes de la Casa</option>
+              <option value="Tres Leches de Lúcuma">Tres Leches de Lúcuma</option>
+              <option value="Torre de Donuts Glaseados">Torre de Donuts Glaseados</option>
+              <option value="Cheesecake de Fresa">Cheesecake de Fresa</option>
+              <option value="Caja de Bocaditos Mixtos">Caja de Bocaditos Mixtos</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="revPlatform">Plataforma:</label>
+            <select id="revPlatform">
+              <option value="Direct">Direct</option>
+              <option value="Google">Google</option>
+              <option value="Facebook">Facebook</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="revComment">Tu Comentario u Opinión:</label>
+            <textarea id="revComment" rows="3" required placeholder="Escribe tu experiencia con nuestros postres..."></textarea>
+          </div>
+          <button type="submit" class="btn-add-cart-modal">PUBLICAR OPINIÓN</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- VENTANAS EMERGENTES ADICIONALES (HISTORIA, PEDIDOS, WHATSAPP, LEGAL)    -->
+  <!-- ======================================================================= -->
+  <div id="historiaModal" class="modal-overlay" onclick="closeModalOnBg(event, 'historiaModal')">
+    <div class="modal-window">
+      <div class="modal-gold-top">
+        <span class="modal-brand">D'Gianna</span>
+        <button class="modal-close-btn" onclick="closeModal('historiaModal')">&times;</button>
+      </div>
+      <div class="simple-modal-content">
+        <div class="nosotros-grid">
+          <div class="nosotros-photo-card">
+            <div class="nosotros-photo-sign">D'Gianna</div>
+            <img src="imagen/tienda-dgianna.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80';" alt="Historia D'Gianna" />
+          </div>
+          <div class="nosotros-description">
+            <h3 style="margin-bottom:10px; font-family:var(--font-script); font-size:2.2rem;">Nuestra Historia</h3>
+            <p>Es una empresa peruana llamada Sociedad Anónima Cerrada (S.A.C.) dedicada a la elaboración y comercialización de productos de panadería y pastelería, con presencia principalmente en el distrito de San Juan de Lurigancho, en Lima. Su apertura fue el 20 de septiembre de 2007.</p>
+            <p style="margin-top:10px;">Cada receta mantiene la tradición familiar y el acabado artesanal que nos ha convertido en parte de las celebraciones de miles de familias en Lima.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="specialOrderModal" class="modal-overlay" onclick="closeModalOnBg(event, 'specialOrderModal')">
+    <div class="modal-window" style="max-width: 520px;">
+      <div class="modal-gold-top">
+        <span class="modal-brand">Pedidos Especiales</span>
+        <button class="modal-close-btn" onclick="closeModal('specialOrderModal')">&times;</button>
+      </div>
+      <div class="simple-modal-content">
+        <p style="margin-bottom:12px; font-size:0.9rem;">Programa tu torta personalizada con 24 horas de anticipación:</p>
+        <form onsubmit="handleSpecialOrder(event)">
+          <div class="form-group">
+            <label>Celebración:</label>
+            <select required>
+              <option>Cumpleaños Personalizado</option>
+              <option>Boda / Aniversario</option>
+              <option>Mesa de Bocaditos Corporativa</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Cantidad de Porciones:</label>
+            <input type="number" min="8" value="20" required />
+          </div>
+          <div class="form-group">
+            <label>Detalles y Dedicatoria:</label>
+            <textarea rows="3" required placeholder="Indica sabores de bizcocho, relleno y temática..."></textarea>
+          </div>
+          <button type="submit" class="btn-add-cart-modal">ENVIAR SOLICITUD ESPECIAL</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="whatsappZoneModal" class="modal-overlay" onclick="closeModalOnBg(event, 'whatsappZoneModal')">
+    <div class="modal-window" style="max-width: 480px;">
+      <div class="modal-gold-top">
+        <span class="modal-brand">Cobertura por WhatsApp</span>
+        <button class="modal-close-btn" onclick="closeModal('whatsappZoneModal')">&times;</button>
+      </div>
+      <div class="simple-modal-content">
+        <p style="margin-bottom:14px;">Atención directa en WhatsApp (<strong>+51 987 654 321</strong>) para cotizar envíos por Uber Flash a cualquier distrito de Lima Metropolitana.</p>
+        <div class="form-group">
+          <label>Tu Distrito y Dirección:</label>
+          <input type="text" id="waAddressInput" placeholder="Ej. Av. Universitaria 1540, San Martín de Porres" />
+        </div>
+        <button class="btn-add-cart-modal" onclick="sendWhatsAppSimulation()">ABRIR CONSULTA DIRECTA</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="notificationsModal" class="modal-overlay" onclick="closeModalOnBg(event, 'notificationsModal')">
+    <div class="modal-window" style="max-width: 460px;">
+      <div class="modal-gold-top">
+        <span class="modal-brand">Notificaciones D'Gianna</span>
+        <button class="modal-close-btn" onclick="closeModal('notificationsModal')">&times;</button>
+      </div>
+      <div class="simple-modal-content">
+        <div class="notif-item">🎉 <strong>¡Envío GRATIS en todo SJL!</strong> En pedidos mayores a S/. 100.00.</div>
+        <div class="notif-item">🍰 <strong>Edición Limitada:</strong> 12 productos estrella con descuento activo hoy.</div>
+        <div class="notif-item">🛵 <strong>Simulador Uber:</strong> Cotiza tu envío en tiempo real en la sección Delivery.</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="legalModal" class="modal-overlay" onclick="closeModalOnBg(event, 'legalModal')">
+    <div class="modal-window" style="max-width: 560px;">
+      <div class="modal-gold-top">
+        <span class="modal-brand">Información Legal y Privacidad</span>
+        <button class="modal-close-btn" onclick="closeModal('legalModal')">&times;</button>
+      </div>
+      <div class="simple-modal-content" style="font-size:0.88rem; line-height:1.55;">
+        <p><strong>Razón Social:</strong> D'GIANNA S.A.C. — Pastelería Fina Artesanal.</p>
+        <p style="margin-top:8px;"><strong>Domicilio Fiscal y Comercial:</strong> Av. Canto Grande 1234 / Av. Los Jardines 214, San Juan de Lurigancho, Lima, Perú.</p>
+        <p style="margin-top:8px;"><strong>Términos de Entrega:</strong> Los pedidos personalizados requieren 24 horas de anticipación. El tiempo estándar de reparto en SJL es de 60 a 90 minutos.</p>
+        <p style="margin-top:8px;"><strong>Política de Datos:</strong> Tus datos de registro y correo están protegidos conforme a la Ley N° 29733 de Protección de Datos Personales del Perú.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenedor de mensajes flotantes (Toasts) -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- ================= SCRIPT FUNCIONAL COMPLETO ================= -->
+  <script>
+    /* =====================================================================
+       1. BASE DE DATOS DE PRODUCTOS (DUPLICADOS SEGÚN ESPECIFICACIÓN)
+       ===================================================================== */
+    const baseAntojos6 = [
+      {
+        id: 'ant-1', category: 'tortas', catLabel: 'Tortas',
+        title: 'Torta de Chocolate',
+        shortDesc: 'Bizcocho de cacao, ganache y avellanas tostadas.',
+        portions: 'Chocolate intenso · 8 porciones',
+        fullDesc: 'Nuestra clásica torta de chocolate, con bizcocho húmedo, relleno de crema de chocolate y cubierta con virutas de chocolate, ganache y avellanas tostadas.',
+        ingredients: 'Ingredientes: Cacao premium, harina selecta, huevos frescos, azúcar, mantequilla, ganache y avellanas tostadas.',
+        allergens: 'Alérgenos: Contiene gluten, lácteos, huevo y frutos secos.',
+        price: 83.00,
+        localImg: 'imagen/antojo-1.jpg',
+        fallbackImg: 'https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'ant-2', category: 'tortas', catLabel: 'Tortas',
+        title: 'Red Velvet',
+        shortDesc: 'Terciopelo rojo con crema suave de queso.',
+        portions: 'Terciopelo rojo · 8 porciones',
+        fullDesc: 'Bizcocho aterciopelado rojo con un toque de cacao fino, relleno de frosting artesanal de queso crema y frambuesas frescas.',
+        ingredients: 'Ingredientes: Harina pastelera, queso crema, mantequilla, huevos frescos, cacao y frutos rojos.',
+        allergens: 'Alérgenos: Contiene gluten, lácteos y huevo.',
+        price: 68.00,
+        localImg: 'imagen/antojo-2.jpg',
+        fallbackImg: 'https://images.unsplash.com/photo-1586788680434-30d324b2d46f?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'ant-3', category: 'crepes', catLabel: 'Crepes',
+        title: 'Crepes de la Casa',
+        shortDesc: 'Frutas frescas, chocolate y crema ligera.',
+        portions: 'Porción artesanal · Frutas frescas',
+        fullDesc: 'Crepes franceses hechos al momento con arándanos, gajos de naranja, crema diplomática y salsa de chocolate bitter.',
+        ingredients: 'Ingredientes: Masa de crepe, leche fresca, huevos, arándanos, naranja, chocolate 70% y crema batida.',
+        allergens: 'Alérgenos: Contiene gluten, lácteos y huevo.',
+        price: 24.00,
+        localImg: 'imagen/antojo-3.jpg',
+        fallbackImg: 'https://images.unsplash.com/photo-1519676867240-f03562e64548?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'ant-4', category: 'bocaditos', catLabel: 'BOCADITOS',
+        title: 'Bocaditos Surtidos',
+        shortDesc: 'Seleccion dulce celebra y compartir',
+        portions: 'Bandeja de celebración · 24 unidades',
+        fullDesc: 'Selección de mini tartaletas de frutos rojos, mini brownies y petit fours terminados a mano para compartir.',
+        ingredients: 'Ingredientes: Masa sablée, crema pastelera, fresas, arándanos, chocolate belga y mantequilla.',
+        allergens: 'Alérgenos: Contiene gluten, lácteos, huevo y trazas de frutos secos.',
+        price: 48.00,
+        localImg: 'imagen/antojo-4.jpg',
+        fallbackImg: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'ant-5', category: 'bocaditos', catLabel: 'BOCADITOS',
+        title: 'Cupcakes de Fresa',
+        shortDesc: 'Chocolate intenso y fresas de temporada.',
+        portions: 'Pack artesanal · 6 unidades',
+        fullDesc: 'Cupcakes húmedos de cacao coronados con ganache batido, azúcar impalpable y fresas frescas seleccionadas.',
+        ingredients: 'Ingredientes: Cacao alcalino, harina selecta, fresas frescas, mantequilla y huevos.',
+        allergens: 'Alérgenos: Contiene gluten, lácteos y huevo.',
+        price: 36.00,
+        localImg: 'imagen/antojo-5.jpg',
+        fallbackImg: 'https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'ant-6', category: 'tortas', catLabel: 'Tortas',
+        title: 'Torta de Chocolate Imperial',
+        shortDesc: 'Bizcocho de cacao, ganache y avellanas tostadas.',
+        portions: 'Formato familiar · 10 porciones',
+        fullDesc: 'Torta en capas de bizcocho húmedo de cacao, crema de avellanas y cobertura espejo de chocolate bitter.',
+        ingredients: 'Ingredientes: Cacao peruano, crema de leche, avellanas tostadas, mantequilla y huevos.',
+        allergens: 'Alérgenos: Contiene gluten, lácteos, huevo y avellanas.',
+        price: 92.00,
+        localImg: 'imagen/antojo-6.jpg',
+        fallbackImg: 'https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=700&q=80'
+      }
+    ];
+
+    // Duplicamos los 6 de portada a 12 productos para Antojos
+    const antojosProducts12 = [
+      ...baseAntojos6,
+      ...baseAntojos6.map((p, idx) => ({
+        ...p,
+        id: `ant-dup-${idx + 7}`,
+        title: `${p.title} Especial`
+      }))
+    ];
+
+    // 12 Productos Originales de Nuestra Vitrina Artesanal (Frame 21)
+    const baseVitrina12 = [
+      {
+        id: 'vit-1', category: 'tortas', catLabel: 'Tortas',
+        title: "Torta de Chocolate D'Gianna",
+        shortDesc: 'Chocolate intenso · 8 porciones',
+        portions: 'Chocolate intenso · 8 porciones',
+        fullDesc: 'Nuestra clásica torta de chocolate, con bizcocho húmedo, relleno de crema de chocolate y cubierta con virutas de chocolate y frutos rojos.',
+        ingredients: 'Ingredientes: Cacao premium, harina selecta, huevos frescos, azúcar, mantequilla, crema de chocolate, virutas de chocolate y frutos rojos.',
+        allergens: 'Alérgenos: Contiene gluten, lácteos, huevo. Puede contener trazas de frutos secos.',
+        price: 85.00,
+        localImg: 'imagen/vitrina-1.jpg',
+        fallbackImg: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'vit-2', category: 'bocaditos', catLabel: 'Bocaditos',
+        title: 'Surtido de Croissants & Daneses',
+        shortDesc: 'Mantequilla francesa · 6 mini unid.',
+        portions: 'Mantequilla francesa · 6 mini unid.',
+        fullDesc: 'Hojaldres dorados elaborados con mantequilla francesa y relleno de frutos rojos.',
+        ingredients: 'Ingredientes: Harina selecta, mantequilla francesa, leche, levadura y frambuesas.',
+        allergens: 'Alérgenos: Contiene gluten, lácteos y huevo.',
+        price: 14.00,
+        localImg: 'imagen/vitrina-2.jpg',
+        fallbackImg: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'vit-3', category: 'crepes', catLabel: 'Crepes',
+        title: 'Crepes de la Casa',
+        shortDesc: 'Frutas frescas, chocolate y crema ligera.',
+        portions: 'Bandeja especial · Frutas frescas',
+        fullDesc: 'Crepes y hojaldres dulces servidos con fresas, arándanos frescos y crema ligera de vainilla.',
+        ingredients: 'Ingredientes: Masa de crepe artesanal, fresas, arándanos, crema batida y chocolate.',
+        allergens: 'Alérgenos: Contiene gluten, lácteos y huevo.',
+        price: 45.00,
+        localImg: 'imagen/vitrina-3.jpg',
+        fallbackImg: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'vit-4', category: 'bocaditos', catLabel: 'Bocaditos',
+        title: 'Torre de Donuts Glaseados',
+        shortDesc: 'Glaseados de la casa · Pack de 6',
+        portions: 'Glaseados de la casa · Pack de 6',
+        fullDesc: 'Torre de 6 donuts artesanales esponjosas con glaseado de vainilla, chocolate y toppings.',
+        ingredients: 'Ingredientes: Harina pastelera, leche entera, mantequilla, azúcar glas y chocolate.',
+        allergens: 'Alérgenos: Contiene gluten, lácteos, huevo y frutos secos.',
+        price: 39.00,
+        localImg: 'imagen/vitrina-4.jpg',
+        fallbackImg: 'https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'vit-5', category: 'tortas', catLabel: 'Tortas',
+        title: 'Tres Leches de Lúcuma',
+        shortDesc: 'Crema de lúcuma · 8 porciones',
+        portions: 'Crema de lúcuma · 8 porciones',
+        fullDesc: 'Bizcocho húmedo en tres leches con pulpa natural de lúcuma de seda y chantilly artesanal.',
+        ingredients: 'Ingredientes: Lúcuma de seda, leche evaporada, leche condensada, crema de leche y huevos.',
+        allergens: 'Alérgenos: Contiene gluten, lácteos y huevo.',
+        price: 83.00,
+        localImg: 'imagen/vitrina-5.jpg',
+        fallbackImg: 'https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'vit-6', category: 'bocaditos', catLabel: 'Bocaditos',
+        title: 'Caja de Bocaditos Mixtos',
+        shortDesc: 'Dulces y salados · 50 unidades',
+        portions: 'Dulces y salados · 50 unidades',
+        fullDesc: 'Caja surtida con 50 bocaditos entre trufas de cacao, alfajores, mini tartas y bocaditos salados.',
+        ingredients: 'Ingredientes: Harina pastelera, manjar blanco de olla, chocolate, mantequilla y frutos secos.',
+        allergens: 'Alérgenos: Contiene gluten, lácteos, huevo y frutos secos.',
+        price: 68.00,
+        localImg: 'imagen/vitrina-6.jpg',
+        fallbackImg: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'vit-7', category: 'crepes', catLabel: 'Crepes',
+        title: 'Crepe de Manjar y Nuez',
+        shortDesc: 'Manjar casero · Porción individual',
+        portions: 'Manjar casero · Porción individual',
+        fullDesc: 'Crepes dorados rellenos de manjar blanco casero de olla y nueces tostadas picadas.',
+        ingredients: 'Ingredientes: Leche fresca, huevos, harina, manjar blanco artesanal y nueces.',
+        allergens: 'Alérgenos: Contiene gluten, lácteos, huevo y nueces.',
+        price: 24.00,
+        localImg: 'imagen/vitrina-7.jpg',
+        fallbackImg: 'https://images.unsplash.com/photo-1519676867240-f03562e64548?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'vit-8', category: 'tortas', catLabel: 'Tortas',
+        title: 'Cheesecake de Fresa',
+        shortDesc: 'Fresas frescas · 8 porciones',
+        portions: 'Fresas frescas · 8 porciones',
+        fullDesc: 'Suave cheesecake horneado sobre base crocante de galleta de vainilla y jalea de fresas frescas.',
+        ingredients: 'Ingredientes: Queso crema premium, galleta de vainilla, mantequilla, fresas frescas y azúcar.',
+        allergens: 'Alérgenos: Contiene gluten, lácteos y huevo.',
+        price: 48.00,
+        localImg: 'imagen/vitrina-8.jpg',
+        fallbackImg: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'vit-9', category: 'tortas', catLabel: 'Tortas',
+        title: 'Torta de Chocolate',
+        shortDesc: 'Bizcocho de cacao, ganache y avellanas tostadas.',
+        portions: 'Bizcocho de cacao · 8 porciones',
+        fullDesc: 'Torta intensa de cacao peruano al 70% con capas de fudge artesanal y avellanas.',
+        ingredients: 'Ingredientes: Cacao 70%, harina selecta, avellanas tostadas, mantequilla y leche.',
+        allergens: 'Alérgenos: Contiene gluten, lácteos, huevo y avellanas.',
+        price: 83.00,
+        localImg: 'imagen/vitrina-9.jpg',
+        fallbackImg: 'https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'vit-10', category: 'tortas', catLabel: 'Tortas',
+        title: 'Red Velvet',
+        shortDesc: 'Terciopelo rojo con crema suave de queso.',
+        portions: 'Terciopelo rojo · 8 porciones',
+        fullDesc: 'Delicado terciopelo rojo con crema suave de queso y frutos rojos de estación.',
+        ingredients: 'Ingredientes: Harina pastelera, queso crema, cacao, mantequilla y frambuesas.',
+        allergens: 'Alérgenos: Contiene gluten, lácteos y huevo.',
+        price: 68.00,
+        localImg: 'imagen/vitrina-10.jpg',
+        fallbackImg: 'https://images.unsplash.com/photo-1586788680434-30d324b2d46f?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'vit-11', category: 'crepes', catLabel: 'Crepes',
+        title: 'Crepes de la Casa',
+        shortDesc: 'Frutas frescas, chocolate y crema ligera.',
+        portions: 'Porción individual · Frutas frescas',
+        fullDesc: 'Crepes finos con arándanos, naranja fresca, chocolate derretido y crema ligera.',
+        ingredients: 'Ingredientes: Masa de crepe, arándanos, naranja, chocolate bitter y crema.',
+        allergens: 'Alérgenos: Contiene gluten, lácteos y huevo.',
+        price: 24.00,
+        localImg: 'imagen/vitrina-11.jpg',
+        fallbackImg: 'https://images.unsplash.com/photo-1519676867240-f03562e64548?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'vit-12', category: 'bocaditos', catLabel: 'Bocaditos',
+        title: 'Bocaditos Surtidos',
+        shortDesc: 'Seleccion dulce celebra y compartir',
+        portions: 'Seleccion dulce · 24 unidades',
+        fullDesc: 'Mini pastelería artesanal surtida para celebraciones, reuniones y eventos.',
+        ingredients: 'Ingredientes: Frutos rojos, crema pastelera, chocolate, masa sablée y almendras.',
+        allergens: 'Alérgenos: Contiene gluten, lácteos, huevo y frutos secos.',
+        price: 48.00,
+        localImg: 'imagen/vitrina-12.jpg',
+        fallbackImg: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=700&q=80'
+      }
+    ];
+
+    // Duplicamos los 12 productos de Nuestra Vitrina Artesanal a 24 productos (Requisito 3)
+    const vitrinaProducts24 = [
+      ...baseVitrina12,
+      ...baseVitrina12.map((p, idx) => ({
+        ...p,
+        id: `vit-dup-${idx + 13}`,
+        title: `${p.title} Reserva`
+      }))
+    ];
+
+    // 12 Mejores Productos exclusivos para la Sección Edición Limitada (Frame 34 + 4 mejores)
+    const limitedProducts12 = [
+      { ...baseVitrina12[0], id: 'lim-1', price: 55.00 },
+      { ...baseVitrina12[6], id: 'lim-2', price: 14.00 },
+      { ...baseVitrina12[2], id: 'lim-3', price: 35.00 },
+      { ...baseVitrina12[3], id: 'lim-4', price: 30.00 },
+      { ...baseVitrina12[4], id: 'lim-5', price: 84.00 },
+      { ...baseVitrina12[3], id: 'lim-6', title: 'Torre de Donuts Glaseados Pack', price: 30.00 },
+      { ...baseVitrina12[9], id: 'lim-7', price: 40.00 },
+      { ...baseVitrina12[8], id: 'lim-8', price: 33.00 },
+      { ...baseVitrina12[7], id: 'lim-9', price: 39.00 },
+      { ...baseVitrina12[5], id: 'lim-10', price: 54.00 },
+      { ...baseAntojos6[4], id: 'lim-11', price: 29.00 },
+      { ...baseAntojos6[5], id: 'lim-12', price: 75.00 }
+    ];
+
+    const masterProductMap = {};
+    [...antojosProducts12, ...vitrinaProducts24, ...limitedProducts12].forEach(p => {
+      masterProductMap[p.id] = p;
+    });
+
+    /* =====================================================================
+       2. RENDERIZADO DE FICHAS DE PRODUCTO ARMONIOSAS
+       ===================================================================== */
+    function buildProductCard(product, isBeigeCard = false) {
+      return `
+        <article class="product-card ${isBeigeCard ? 'vitrina-style' : ''}" onclick="openProductModal('${product.id}')">
+          <div class="img-wrap">
+            <img
+              src="${product.localImg}"
+              onerror="this.onerror=null;this.src='${product.fallbackImg}';"
+              alt="${product.title}"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-body">
+            <div>
+              <div class="card-category">${product.catLabel || 'Pastelería Fina'}</div>
+              <h3 class="card-title">${product.title}</h3>
+              <p class="card-desc">${product.shortDesc}</p>
+            </div>
+            <div class="card-footer-row">
+              <span class="card-price">S/. ${product.price.toFixed(2)}</span>
+              <div class="card-actions">
+                <button
+                  type="button"
+                  class="btn-cart-icon"
+                  title="Añadir directo al carrito"
+                  onclick="event.stopPropagation(); quickAddToCart('${product.id}')">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  class="btn-agregar"
+                  onclick="event.stopPropagation(); openProductModal('${product.id}')">
+                  COMPRAR
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderAntojos(category = 'todos') {
+      const list = category === 'todos'
+        ? antojosProducts12
+        : antojosProducts12.filter(p => p.category === category);
+      document.getElementById('antojosGrid').innerHTML = list.map(p => buildProductCard(p, false)).join('');
+    }
+
+    function renderVitrina(category = 'todos') {
+      const list = category === 'todos'
+        ? vitrinaProducts24
+        : vitrinaProducts24.filter(p => p.category === category);
+      document.getElementById('vitrinaGrid').innerHTML = list.map(p => buildProductCard(p, true)).join('');
+    }
+
+    function renderLimited() {
+      document.getElementById('limitedGrid').innerHTML = limitedProducts12.map(p => buildProductCard(p, true)).join('');
+    }
+
+    function filterAntojos(cat, btn) {
+      document.querySelectorAll('#antojosFilters .filter-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderAntojos(cat);
+    }
+
+    function filterVitrina(cat, btn) {
+      document.querySelectorAll('#vitrinaFilters .filter-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderVitrina(cat);
+    }
+
+    /* =====================================================================
+       3. CARRUSEL DE 3 DIAPOSITIVAS ARRASTRABLE CON EL MOUSE
+       ===================================================================== */
+    let currentSlide = 0;
+    const totalSlides = 3;
+    let isDragging = false;
+    let startPos = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+
+    const viewport = document.getElementById('heroViewport');
+    const track = document.getElementById('heroTrack');
+
+    function updateCarouselPosition() {
+      // Cada slide ocupa 78% del ancho en escritorio para mostrar el adelanto lateral como en Frame 16
+      const slideWidth = track.querySelector('.hero-slide').offsetWidth;
+      const maxOffset = track.scrollWidth - viewport.offsetWidth;
+      let targetOffset = currentSlide * slideWidth;
+      if (targetOffset > maxOffset) targetOffset = maxOffset;
+      track.style.transform = `translateX(${-targetOffset}px)`;
+      prevTranslate = -targetOffset;
+
+      document.querySelectorAll('#carouselDots .dot').forEach((d, idx) => {
+        d.classList.toggle('active', idx === currentSlide);
+      });
+    }
+
+    function goToSlide(index) {
+      currentSlide = (index + totalSlides) % totalSlides;
+      updateCarouselPosition();
+    }
+
+    function moveSlide(step) {
+      goToSlide(currentSlide + step);
+    }
+
+    // Eventos de arrastre con Mouse y Touch
+    viewport.addEventListener('mousedown', startDrag);
+    viewport.addEventListener('touchstart', startDrag, { passive: true });
+    window.addEventListener('mousemove', dragMove);
+    window.addEventListener('touchmove', dragMove, { passive: true });
+    window.addEventListener('mouseup', endDrag);
+    window.addEventListener('touchend', endDrag);
+
+    function getPositionX(e) {
+      return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+    }
+
+    function startDrag(e) {
+      if (e.target.tagName === 'BUTTON') return;
+      isDragging = true;
+      startPos = getPositionX(e);
+      track.style.transition = 'none';
+      viewport.classList.add('grabbing');
+    }
+
+    function dragMove(e) {
+      if (!isDragging) return;
+      const currentPosition = getPositionX(e);
+      const diff = currentPosition - startPos;
+      currentTranslate = prevTranslate + diff;
+      track.style.transform = `translateX(${currentTranslate}px)`;
+    }
+
+    function endDrag(e) {
+      if (!isDragging) return;
+      isDragging = false;
+      viewport.classList.remove('grabbing');
+      track.style.transition = 'transform 0.45s cubic-bezier(0.25, 1, 0.5, 1)';
+
+      const movedBy = currentTranslate - prevTranslate;
+      if (movedBy < -70 && currentSlide < totalSlides - 1) currentSlide += 1;
+      if (movedBy > 70 && currentSlide > 0) currentSlide -= 1;
+
+      updateCarouselPosition();
+    }
+
+    window.addEventListener('resize', updateCarouselPosition);
+
+    /* =====================================================================
+       4. MODAL DE PRODUCTO Y CARRITO DE COMPRAS
+       ===================================================================== */
+    let activeProduct = null;
+    let deliveryChoice = 'Easy entrega';
+    let cart = [];
+
+    function openProductModal(productId) {
+      const p = masterProductMap[productId];
+      if (!p) return;
+      activeProduct = p;
+
+      const imgEl = document.getElementById('pmImage');
+      imgEl.src = p.localImg;
+      imgEl.onerror = function() { this.onerror = null; this.src = p.fallbackImg; };
+
+      document.getElementById('pmTitle').textContent = p.title;
+      document.getElementById('pmDesc').textContent = p.fullDesc;
+      document.getElementById('pmPortions').textContent = p.portions;
+      document.getElementById('pmIngredients').textContent = p.ingredients;
+      document.getElementById('pmAllergens').textContent = p.allergens;
+      document.getElementById('pmPrice').textContent = `S/. ${p.price.toFixed(2)}`;
+      document.getElementById('pmCardMessage').value = '';
+
+      openModal('productModal');
+    }
+
+    function selectDeliveryOption(optionName) {
+      deliveryChoice = optionName;
+      document.getElementById('optEasy').classList.toggle('selected', optionName === 'Easy entrega');
+      document.getElementById('optPickup').classList.toggle('selected', optionName === 'Pickup Pickup');
+    }
+
+    function quickAddToCart(productId) {
+      const p = masterProductMap[productId];
+      if (!p) return;
+      cart.push({ ...p, cardMessage: 'Sin dedicatoria', deliveryMethod: 'Easy entrega' });
+      updateCartUI();
+      showToast(`🛒 ¡${p.title} (S/. ${p.price.toFixed(2)}) añadido al carrito!`);
+    }
+
+    function addModalProductToCart(openCartImmediately) {
+      if (!activeProduct) return;
+      const msg = document.getElementById('pmCardMessage').value.trim() || 'Sin dedicatoria';
+      cart.push({ ...activeProduct, cardMessage: msg, deliveryMethod: deliveryChoice });
+      updateCartUI();
+      closeModal('productModal');
+      if (openCartImmediately) {
+        openCartModal();
+      } else {
+        showToast(`¡${activeProduct.title} agregado al carrito!`);
+      }
+    }
+
+    function updateCartUI() {
+      document.getElementById('cartBadge').textContent = cart.length;
+      calculateUberShipping();
+    }
+
+    function openCartModal() {
+      const container = document.getElementById('cartItemsContainer');
+      const subEl = document.getElementById('cartSubtotalText');
+      const shipEl = document.getElementById('cartShippingText');
+      const totEl = document.getElementById('cartTotalText');
+
+      if (cart.length === 0) {
+        container.innerHTML = `<p style="text-align:center; padding:22px 0; color:var(--text-muted);">Tu carrito está vacío. Explora nuestra vitrina y agrega tus postres favoritos.</p>`;
+        subEl.textContent = 'S/. 0.00';
+        shipEl.textContent = 'S/. 0.00';
+        totEl.textContent = 'S/. 0.00';
+      } else {
+        let subtotal = 0;
+        container.innerHTML = cart.map((item, idx) => {
+          subtotal += item.price;
+          return `
+            <div class="cart-item-row">
+              <img src="${item.localImg}" onerror="this.onerror=null;this.src='${item.fallbackImg}';" alt="${item.title}" />
+              <div style="flex:1;">
+                <strong>${item.title}</strong>
+                <div style="font-size:0.76rem; color:var(--text-muted);">Tarjeta: "${item.cardMessage}" · ${item.deliveryMethod}</div>
+              </div>
+              <div style="font-weight:600;">S/. ${item.price.toFixed(2)}</div>
+              <button class="btn-remove-item" onclick="removeCartItem(${idx})">&times;</button>
+            </div>
+          `;
+        }).join('');
+
+        const shipping = subtotal >= 100 ? 0 : getSelectedUberCost();
+        subEl.textContent = `S/. ${subtotal.toFixed(2)}`;
+        shipEl.textContent = shipping === 0 ? 'S/. 0.00 (¡Envío GRATIS!)' : `S/. ${shipping.toFixed(2)}`;
+        totEl.textContent = `S/. ${(subtotal + shipping).toFixed(2)}`;
+      }
+      openModal('cartModal');
+    }
+
+    function removeCartItem(idx) {
+      cart.splice(idx, 1);
+      updateCartUI();
+      openCartModal();
+    }
+
+    function clearCart() {
+      cart = [];
+      updateCartUI();
+      openCartModal();
+    }
+
+    function processCheckout() {
+      if (cart.length === 0) {
+        showToast('Tu carrito está vacío.');
+        return;
+      }
+      const totalStr = document.getElementById('cartTotalText').textContent;
+      const orderSummary = `${cart.length} postre(s) (${cart.map(c => c.title).slice(0, 2).join(', ')}) — Total: ${totalStr}`;
+      saveOrderToUserProfile(orderSummary);
+      cart = [];
+      updateCartUI();
+      closeModal('cartModal');
+      showToast(`✅ ¡Pedido confirmado por ${totalStr}! Puedes revisarlo en tu Perfil de Usuario.`);
+    }
+
+    /* =====================================================================
+       5. SIMULADOR DE ENVÍO POR UBER EN SOLES (FRAME 43)
+       ===================================================================== */
+    function getSelectedUberCost() {
+      const zoneSel = document.getElementById('uberZoneSelect');
+      const vehSel = document.getElementById('uberVehicleSelect');
+      const baseRate = parseFloat(zoneSel.value || 5);
+      const multiplier = parseFloat(vehSel.value || 1);
+      return +(baseRate * multiplier).toFixed(2);
+    }
+
+    function calculateUberShipping() {
+      const zoneSel = document.getElementById('uberZoneSelect');
+      const selectedOpt = zoneSel.options[zoneSel.selectedIndex];
+      const km = selectedOpt.getAttribute('data-km');
+      const time = selectedOpt.getAttribute('data-time');
+      const isSJL = parseFloat(zoneSel.value) <= 7.00;
+
+      const subtotal = cart.reduce((acc, item) => acc + item.price, 0);
+      let finalShipping = getSelectedUberCost();
+
+      if (subtotal >= 100 && isSJL) {
+        finalShipping = 0;
+        document.getElementById('uberPriceDisplay').textContent = 'S/. 0.00 (¡GRATIS por compra mayor a S/. 100!)';
+      } else {
+        document.getElementById('uberPriceDisplay').textContent = `S/. ${finalShipping.toFixed(2)}`;
+      }
+
+      document.getElementById('uberKm').textContent = `${km} km`;
+      document.getElementById('uberTime').textContent = time;
+    }
+
+    /* =====================================================================
+       6. AUTENTICACIÓN, REGISTRO Y VENTANA DE PERFIL DE USUARIO
+       ===================================================================== */
+    function switchAuthView(view) {
+      document.getElementById('loginFormView').style.display = view === 'login' ? 'flex' : 'none';
+      document.getElementById('registerFormView').style.display = view === 'register' ? 'flex' : 'none';
+    }
+
+    function handleUserIconClick() {
+      const currentUser = JSON.parse(localStorage.getItem('dgianna_user') || 'null');
+      if (currentUser) {
+        populateAndOpenProfile(currentUser);
+      } else {
+        switchAuthView('login');
+        openModal('authModal');
+      }
+    }
+
+    function handleLogin() {
+      const id = document.getElementById('loginIdentifier').value.trim();
+      const pass = document.getElementById('loginPassword').value.trim();
+      if (!id || !pass) {
+        showToast('Ingresa tu correo/teléfono y tu contraseña.');
+        return;
+      }
+      const user = {
+        name: id.includes('@') ? id.split('@')[0] : `Cliente ${id}`,
+        email: id,
+        zone: 'Canto Grande, San Juan de Lurigancho',
+        provider: 'Correo / Clave',
+        orders: ['Torta de Chocolate D\'Gianna — S/. 85.00 (En preparación)']
+      };
+      localStorage.setItem('dgianna_user', JSON.stringify(user));
+      closeModal('authModal');
+      populateAndOpenProfile(user);
+      showToast(`¡Bienvenido(a), ${user.name}!`);
+    }
+
+    function handleRegister() {
+      const name = document.getElementById('regName').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      const zone = document.getElementById('regZone').value.trim() || 'San Juan de Lurigancho, Lima';
+      const pass = document.getElementById('regPassword').value.trim();
+
+      if (!name || !email || !pass) {
+        showToast('Completa todos los campos para registrarte.');
+        return;
+      }
+      const newUser = {
+        name,
+        email,
+        zone,
+        provider: 'Registro Web',
+        orders: ['Cuenta creada hoy — Bono de bienvenida activo']
+      };
+      localStorage.setItem('dgianna_user', JSON.stringify(newUser));
+      closeModal('authModal');
+      populateAndOpenProfile(newUser);
+      showToast(`🎉 ¡Registro exitoso! Aquí tienes tu perfil, ${name}.`);
+    }
+
+    function completeGoogleAuth(name, email, zone) {
+      const googleUser = {
+        name,
+        email,
+        zone,
+        provider: 'Google',
+        orders: ['Sesión verificada con Google — Envío preferente en SJL']
+      };
+      localStorage.setItem('dgianna_user', JSON.stringify(googleUser));
+      closeModal('googleModal');
+      closeModal('authModal');
+      populateAndOpenProfile(googleUser);
+      showToast(`Conectado con Google como ${name}`);
+    }
+
+    function handleCustomGoogleAuth() {
+      const email = document.getElementById('customGoogleEmail').value.trim();
+      if (!email || !email.includes('@')) {
+        showToast('Ingresa un correo Gmail válido.');
+        return;
+      }
+      const name = email.split('@')[0];
+      completeGoogleAuth(name, email, 'San Juan de Lurigancho, Lima');
+    }
+
+    function populateAndOpenProfile(user) {
+      document.getElementById('profileAvatarLetter').textContent = user.name.charAt(0).toUpperCase();
+      document.getElementById('profileNameDisplay').textContent = user.name;
+      document.getElementById('profileEmailDisplay').textContent = user.email;
+      document.getElementById('profileZoneDisplay').textContent = `📍 Zona de entrega: ${user.zone}`;
+      document.getElementById('profileProviderBadge').textContent = user.provider;
+      document.getElementById('profileOrdersCount').textContent = (user.orders || []).length;
+
+      const listEl = document.getElementById('profileOrdersList');
+      if (user.orders && user.orders.length > 0) {
+        listEl.innerHTML = user.orders.map(o => `<div class="profile-order-item">🍰 ${o}</div>`).join('');
+      }
+
+      const pill = document.getElementById('userGreetingPill');
+      pill.style.display = 'inline-flex';
+      pill.textContent = `👤 ${user.name}`;
+
+      openModal('profileModal');
+    }
+
+    function saveOrderToUserProfile(orderText) {
+      const user = JSON.parse(localStorage.getItem('dgianna_user') || 'null');
+      if (user) {
+        user.orders = user.orders || [];
+        user.orders.unshift(orderText);
+        localStorage.setItem('dgianna_user', JSON.stringify(user));
+      }
+    }
+
+    function logoutUser() {
+      localStorage.removeItem('dgianna_user');
+      document.getElementById('userGreetingPill').style.display = 'none';
+      closeModal('profileModal');
+      showToast('Has cerrado tu sesión.');
+    }
+
+    /* =====================================================================
+       7. COMENTARIOS Y OPINIONES INTERACTIVAS (FRAME 39)
+       ===================================================================== */
+    let reviewsList = [
+      {
+        name: 'Maria G.', date: '17/09/2023', stars: 5,
+        product: "Torta de Chocolate D'Gianna",
+        comment: '¡Increíble sabor! La mejor torta de chocolate en SJL. 5 estrellas.',
+        platform: 'Google'
+      },
+      {
+        name: 'Juan P.', date: '14/09/2023', stars: 5,
+        product: 'Box Desayuno Sorpresa',
+        comment: 'Detalle perfecto para el aniversario. Los crepes fueron un éxito. 5 estrellas.',
+        platform: 'Facebook'
+      },
+      {
+        name: 'Ana L.', date: '27/07/2023', stars: 5,
+        product: 'Red Velvet Slice',
+        comment: 'Sabor delicado, muy fresco. ¡Recomendado! 5 estrellas.',
+        platform: 'Direct'
+      },
+      {
+        name: 'Pedro M.', date: '13/09/2023', stars: 5,
+        product: 'Donuts Glaseadas',
+        comment: 'Diversión garantizada para el cumple de mi hija. ¡Súper frescas! 5 estrellas.',
+        platform: 'Google'
+      }
+    ];
+    let totalReviewsCounter = 350;
+    let currentStarSelection = 5;
+
+    function renderReviews() {
+      const grid = document.getElementById('reviewsGrid');
+      grid.innerHTML = reviewsList.map(r => `
+        <article class="review-card">
+          <div class="review-stars">${'★ '.repeat(r.stars).trim()}</div>
+          <div class="review-body">
+            <div class="review-avatar">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/>
+              </svg>
+            </div>
+            <div class="review-info">
+              <h4>${r.name} (${r.date})</h4>
+              <ul>
+                <li>${r.product}</li>
+                <li>${r.comment}</li>
+                <li>Plataforma: ${r.platform}</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      `).join('');
+      document.getElementById('reviewsCountText').textContent = `Stars (based on ${totalReviewsCounter} reviews)`;
+    }
+
+    function setReviewStars(num) {
+      currentStarSelection = num;
+      document.querySelectorAll('#starPicker span').forEach((s, idx) => {
+        s.classList.toggle('active', idx < num);
+      });
+    }
+
+    function handleNewReviewSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('revName').value.trim();
+      const product = document.getElementById('revProduct').value;
+      const platform = document.getElementById('revPlatform').value;
+      const comment = document.getElementById('revComment').value.trim();
+
+      const now = new Date();
+      const dateStr = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`;
+
+      reviewsList.unshift({
+        name, date: dateStr, stars: currentStarSelection, product,
+        comment: `${comment} ${currentStarSelection} estrellas.`,
+        platform
+      });
+      totalReviewsCounter++;
+      renderReviews();
+
+      document.getElementById('featuredQuoteText').textContent = comment;
+      document.getElementById('featuredQuoteAuthor').textContent = `${name.toUpperCase()} · CLIENTE DULCE ALMA`;
+
+      e.target.reset();
+      closeModal('reviewModal');
+      showToast('⭐ ¡Gracias! Tu reseña ha sido publicada.');
+    }
+
+    /* =====================================================================
+       8. MODO OSCURO, TEMPORIZADOR Y UTILIDADES DE VENTANAS EMERGENTES
+       ===================================================================== */
+    function toggleDarkMode() {
+      const isDark = document.body.classList.toggle('dark-mode');
+      document.getElementById('themeIcon').textContent = isDark ? '☀️' : '🌙';
+      document.getElementById('themeLabel').textContent = isDark ? 'Modo Claro' : 'Modo Oscuro';
+      localStorage.setItem('dgianna_theme', isDark ? 'dark' : 'light');
+    }
+
+    let timerSeconds = (2 * 86400) + (15 * 3600) + (48 * 60) + 30;
+    function initCountdown() {
+      const el = document.getElementById('countdownTimer');
+      setInterval(() => {
+        if (timerSeconds > 0) timerSeconds--;
+        const d = Math.floor(timerSeconds / 86400);
+        const h = Math.floor((timerSeconds % 86400) / 3600);
+        const m = Math.floor((timerSeconds % 3600) / 60);
+        const s = timerSeconds % 60;
+        el.textContent = `${String(d).padStart(2, '0')} : ${String(h).padStart(2, '0')} : ${String(m).padStart(2, '0')} : ${String(s).padStart(2, '0')}`;
+      }, 1000);
+    }
+
+    function openModal(id) {
+      document.getElementById(id).classList.add('open');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('open');
+    }
+
+    function closeModalOnBg(event, id) {
+      if (event.target.id === id) closeModal(id);
+    }
+
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('cName').value;
+      showToast(`📩 ¡Gracias ${name}! Tu mensaje fue enviado a D'Gianna.`);
+      e.target.reset();
+    }
+
+    function handleSpecialOrder(e) {
+      e.preventDefault();
+      closeModal('specialOrderModal');
+      showToast('🎂 ¡Solicitud de Pedido Especial registrada con éxito!');
+      e.target.reset();
+    }
+
+    function sendWhatsAppSimulation() {
+      const addr = document.getElementById('waAddressInput').value.trim() || 'Lima';
+      closeModal('whatsappZoneModal');
+      showToast(`📱 Cotizando cobertura por WhatsApp (+51 987 654 321) para: ${addr}`);
+    }
+
+    function showToast(msg) {
+      const container = document.getElementById('toastContainer');
+      const div = document.createElement('div');
+      div.className = 'toast';
+      div.textContent = msg;
+      container.appendChild(div);
+      setTimeout(() => div.remove(), 3800);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderAntojos('todos');
+      renderVitrina('todos');
+      renderLimited();
+      renderReviews();
+      calculateUberShipping();
+      initCountdown();
+
+      const savedTheme = localStorage.getItem('dgianna_theme');
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.getElementById('themeIcon').textContent = '☀️';
+        document.getElementById('themeLabel').textContent = 'Modo Claro';
+      }
+
+      const savedUser = JSON.parse(localStorage.getItem('dgianna_user') || 'null');
+      if (savedUser) {
+        const pill = document.getElementById('userGreetingPill');
+        pill.style.display = 'inline-flex';
+        pill.textContent = `👤 ${savedUser.name}`;
+      }
+    });
+  </script>
+</body>
+</html>
